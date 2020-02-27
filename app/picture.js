@@ -59,11 +59,9 @@ const initCam = (video, mdl) => {
 
 const draw = (mdl) => {
   let image = new Image()
-  document
-    .getElementById("canvas")
-    .getContext("2d")
-    .drawImage(mdl.video, 0, 0, 670, 300)
-  image.src = document.getElementById("canvas").toDataURL("image/webp")
+  let canvas = document.createElement("canvas")
+  canvas.getContext("2d").drawImage(mdl.video, 0, 0, 200, 100)
+  image.src = canvas.toDataURL("image/webp")
   mdl.card[mdl.side] = image
   m.route.set("/addcard")
 }
@@ -79,10 +77,7 @@ const Picture = () => {
             autoplay: true,
             playsinline: true
           }),
-          m(OverLay),
-          m("canvas", {
-            id: "canvas"
-          })
+          m(OverLay)
         ]),
         m("button", { onclick: () => draw(mdl) }, "Save")
       ]),

@@ -17,8 +17,8 @@ const IdMaker = ({ attrs: { mdl } }) => {
   }
 
   const getImage = (canvas, mdl, side) => {
-    canvas.width = mdl.card[side].width
-    canvas.height = mdl.card[side].height
+    // canvas.width = mdl.card[side].width
+    // canvas.height = mdl.card[side].height
     canvas.getContext("2d").drawImage(mdl.card[side], 0, 0)
   }
 
