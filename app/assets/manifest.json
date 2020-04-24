@@ -39,7 +39,7 @@
       "density": "4.0"
     }
   ],
-  "start_url": "/trello/#!/home",
+  "start_url": "/trello",
   "background_color": "#3367D6",
   "display": "standalone",
   "scope": "/",
