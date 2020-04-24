@@ -63,12 +63,18 @@ body {
 .card {
   background-color: whitesmoke;
   padding: 3px;
+  margin: 5px;
   -webkit-box-shadow: 0 8px 6px -6px black;
   -moz-box-shadow: 0 8px 6px -6px black;
   box-shadow: 0 8px 6px -6px black;
   &:hover {
     background-color: rgb(141, 137, 137);
   }
+}
+
+.rotated {
+  transform: rotate(-90deg);
+  transform-origin: right top;
 }
 
 @media screen and (min-width: 351px) {

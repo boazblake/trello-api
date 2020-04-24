@@ -55,7 +55,7 @@ const Column = ({ attrs: { mdl, col } }) => {
     highlight: false,
     colId: col.id,
     isSelected: false,
-    toggleSection: { onclick: () => (state.isSelected = !state.isSelected) },
+    togglePinSection: { onclick: () => (state.isSelected = !state.isSelected) },
   }
 
   const addCard = (mdl) => (colId) => (id) =>
@@ -85,7 +85,7 @@ const Column = ({ attrs: { mdl, col } }) => {
               { onclick: () => addCard(mdl)(col.id)(uuid()) },
               "Add Card"
             ),
-            m(state.isSelected ? PinSolid : PinLine, state.toggleSection),
+            m(state.isSelected ? PinSolid : PinLine, state.togglePinSection),
             m(".panel-title", col.id),
             m(
               "input.panel-title",
