@@ -1,6 +1,6 @@
 {
-  "short_name": "id-cards",
-  "name": "idcards",
+  "short_name": "trello",
+  "name": "trello",
   "icons": [
     {
       "src": "./icons/android-icon-36x36.png",
@@ -39,7 +39,7 @@
       "density": "4.0"
     }
   ],
-  "start_url": "/idcards/#!/home",
+  "start_url": "/trello/#!/home",
   "background_color": "#3367D6",
   "display": "standalone",
   "scope": "/",

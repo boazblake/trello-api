@@ -1,10 +1,15 @@
-const model = {
-  state: {},
-  settings: {},
-  page: "",
-  idCards: [],
-  stream: undefined,
-  card: { front: undefined, back: undefined, name: undefined }
-}
+export const newCard = (id) => ({ id, title: "", description: "" })
+export const newCol = (id) => ({ id, title: "", cards: [], isSelected: false })
 
+const model = {
+  settings: {},
+  state: {
+    dragging: {
+      oldColId: "",
+      cardId: "",
+    },
+  },
+  cols: [],
+  cards: [],
+}
 export default model
