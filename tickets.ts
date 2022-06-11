@@ -1,19 +1,19 @@
 import { ITicket } from "./types.ts"
+import { R } from './deps.ts'
 
 const Tickets = new Map<string, ITicket>()
 
-const getAll = () => Array.from(Tickets.values())
+const getAll = ():ITicket[] => Array.from(Tickets.values())
 
-const getById = (id: string) => Tickets.get(id) ? Tickets.get(id) : 'error not project with that id'
+const getById = (id: string): ITicket | undefined => Tickets.get(id)
+const deleteById = (id: string): Boolean => Tickets.delete(id)
 
-const deleteById = (id: string) => Tickets.delete(id)
-
-const updateById = (id: string, project:ITicket) => {
+const updateById = (id: string, project:ITicket) :ITicket | undefined => {
   deleteById(id)
-  add(id, project)
+  return add(id, project)
 }
 
-const add = (id:string, project: ITicket) => Tickets.set(id, project)
+const add = (id:string, project: ITicket) :ITicket | undefined => Tickets.set(id, project).get(id)
 
 
 export default { getAll , getById, add, updateById, deleteById}

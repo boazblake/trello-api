@@ -1,0 +1,12 @@
+{
+  "name": "trello-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Boaz Blake <BBlake@goempyrean.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "deno run --allow-all --unstable ./server.ts",
+    "clean": "deno cache --reload ./deps.ts"
+  }
+}
+

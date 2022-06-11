@@ -1,20 +1,23 @@
-export interface IProject {
+export type IProject = {
   id: string,
   title: string
+  order: number
 }
 
-export interface ITicket {
+export type ITicket = {
   id: string,
   title: string
   projectId: string
   isSelected: boolean
+  order: number
 }
 
-export interface IIssue {
+export type IIssue = {
   id: string,
   title: string,
   ticketId: string,
   isSelected: boolean
+  order: number
 }
 
 // export {

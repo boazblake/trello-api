@@ -1,20 +1,21 @@
-import { IIssue} from "./types.ts"
+import { IIssue } from "./types.ts"
+import {R} from './deps.ts'
 
 const Issues = new Map<string, IIssue>()
 
 
-const getAll = () => Array.from(Issues.values())
+const getAll = (): IIssue[] => Array.from(Issues.values())
 
-const getById = (id: string) => Issues.get(id) ? Issues.get(id) : 'error not issue with that id'
+const getById = (id: string) :IIssue | undefined => Issues.get(id)
 
-const deleteById = (id: string) => Issues.delete(id)
+const deleteById = (id: string): boolean => Issues.delete(id)
 
-const updateById = (id: string, issue:IIssue) => {
+const updateById = (id: string, issue:IIssue): IIssue | undefined => {
   deleteById(id)
-  add(id, issue)
+  return add(id, issue)
 }
 
-const add = (id:string, issue: IIssue) => Issues.set(id, issue)
+const add = (id:string, issue: IIssue) :IIssue | undefined => Issues.set(id, issue).get(id)
 
 
 export default { getAll , getById, add, updateById, deleteById}

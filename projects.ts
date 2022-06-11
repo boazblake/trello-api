@@ -1,19 +1,21 @@
 import { IProject } from "./types.ts"
+import { R } from './deps.ts'
 
 const projects = new Map<string, IProject>()
 
-const getAll = () => Array.from(projects.values())
+const getAll = () : IProject[] => Array.from(projects.values())
 
-const getById = (id: string) => projects.get(id) ? projects.get(id) : 'error not project with that id'
 
-const deleteById = (id: string) => projects.delete(id)
+const getById = (id: string) : IProject | undefined => projects.get(id)
 
-const updateById = (id: string, project:IProject) => {
+const deleteById = (id: string): boolean => projects.delete(id)
+
+const updateById = (id: string, project:IProject): IProject | undefined => {
   deleteById(id)
-  add(id, project)
+  return add(id, project)
 }
 
-const add = (id:string, project: IProject) => projects.set(id, project)
+const add = (id:string, project: IProject): IProject | undefined=> projects.set(id, project).get(id)
 
 
 export default { getAll , getById, add, updateById, deleteById}
