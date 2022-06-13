@@ -1,5 +1,4 @@
 import { IProject } from "./types.ts"
-import { R } from './deps.ts'
 
 const projects = new Map<string, IProject>()
 

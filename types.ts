@@ -18,6 +18,3 @@ export type IIssue = {
   order: number
 }
 
-// export {
-//   IIssues, ITicket, IProject
-// }

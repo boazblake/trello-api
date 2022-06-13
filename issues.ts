@@ -1,5 +1,4 @@
 import { IIssue } from "./types.ts"
-import {R} from './deps.ts'
 
 const Issues = new Map<string, IIssue>()
 

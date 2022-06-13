@@ -179,9 +179,7 @@ app.use(oakCors({ origin: "*" }))
 app.use(router.allowedMethods())
 app.use(router.routes())
 
-app.addEventListener('listen', (e) => {
-  console.log(`Listening on: localhost:${port}`)
-})
+app.addEventListener('listen', ({port}) => log(`Listening on: localhost`)(port))
 
 await app.listen({ port })
 

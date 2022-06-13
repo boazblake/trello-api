@@ -1,5 +1,4 @@
 import { ITicket } from "./types.ts"
-import { R } from './deps.ts'
 
 const Tickets = new Map<string, ITicket>()
 
