@@ -59,7 +59,8 @@ router.options('/projects/:id', oakCors({ origin: "http://localhost:3000" }))
   let { id } = helpers.getQuery(ctx, { mergeParams: true })
   let ticketIds = R.compose(R.pluck('id'), R.filter(R.propEq('projectId', id)))(Tickets.getAll())
   let issues = Issues.getAll()
-  let issueIds = R.compose(R.pluck('id'), R.filter((x:IIssue) => ticketIds.includes(x.ticketId)))(issues)
+    let issueIds = R.compose(R.pluck('id'), R.filter((x: IIssue) => ticketIds.includes(x.ticketId)))(issues)
+    console.log('delete 0project', issueIds)
   issueIds.forEach((id: string) => Issues.deleteById(id))
   ticketIds.forEach(((id: string) => Tickets.deleteById(id)))
   Projects.deleteById(id)
@@ -98,6 +99,16 @@ router.put('/tickets/:id', async ctx => {
   }}
   Tickets.updateById(id,ticket)
   ctx.response.body = Tickets.getById(id)
+})
+
+router.options('/tickets/:id', oakCors({ origin: "http://localhost:3000" }))
+  .delete('/tickets/:id', oakCors({ origin: "http://localhost:3000" }), async ctx => {
+  let { id } = helpers.getQuery(ctx, { mergeParams: true })
+  let issueIds = R.compose(R.pluck('id'), R.filter(R.propEq('ticketId', id)))(Issues.getAll())
+    console.log('delete ticket', issueIds)
+  issueIds.forEach(((id: string) => Issues.deleteById(id)))
+  Tickets.deleteById(id)
+  ctx.response.body = []
 })
 
 router.get('/issues', (ctx) => {
@@ -152,6 +163,13 @@ router.put('/issues/:id', async (ctx) => {
   }
   Issues.updateById(issue.id,issue)
   ctx.response.body = Issues.getById(issue.id)
+})
+
+router.options('/issues/:id', oakCors({ origin: "http://localhost:3000" }))
+  .delete('/issues/:id', oakCors({ origin: "http://localhost:3000" }), async ctx => {
+  let { id } = helpers.getQuery(ctx, { mergeParams: true })
+  Issues.deleteById(id)
+  ctx.response.body = []
 })
 
 app.use(etag.factory())
